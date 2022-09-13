@@ -8,20 +8,20 @@ namespace Libreria.Dominio
 {
     public class Libreria
     {
-        public List<Libro> Libros { get; set; }
+        public List<Book> Libros { get; set; }
         
         public Libreria()
         {
-            Libros = new List<Libro>();
+            Libros = new List<Book>();
 
-            Libro libro1 = new Libro();
+            Book libro1 = new Book();
             libro1.Codigo = "01";
             libro1.Nombre = "GOT";
             libro1.Categoria = "Ficción";
             libro1.Cantidad = 20;
             libro1.Valor = 5000;
 
-            Libro libro2 = new Libro();
+            Book libro2 = new Book();
             libro2.Codigo = "01";
             libro2.Nombre = "GOT";
             libro2.Categoria = "Ficción";
@@ -34,7 +34,7 @@ namespace Libreria.Dominio
         }
         
         //Validamos si la libria cuenta con el libro.
-        public int validarLibro(string codigo)
+        public int ValidarLibro(string codigo)
         {
             int encontro = -1;
             for (int i = 0; i < Libros.Count; i++)
@@ -47,9 +47,9 @@ namespace Libreria.Dominio
             return encontro; //retorna la posicion del libro en la lista.
         }
 
-        public bool modificarLibro(string codigo, string nombre, string categoria, double valor)
+        public bool ModificarLibro(string codigo, string nombre, string categoria, double valor)
         {
-            int enc = this.validarLibro(codigo); //si el libro existe retorna la posicion
+            int enc = this.ValidarLibro(codigo); //si el libro existe retorna la posicion
 
             if (enc >= 0)
             {
@@ -61,10 +61,14 @@ namespace Libreria.Dominio
             return false;
         }
 
-        //Agregamos el libro.
-        public bool agregarLibro(Libro libro)
+        /// <summary>
+        /// Se agrega el libro a lista de libros, si el libro existe se suma la cantidad, si no existe se agrega como libro nuevo.
+        /// </summary>
+        /// <param name="libro"></param>
+        /// <returns>bool value</returns>
+        public bool AgregarLibro(Book libro)
         {
-            int enc = validarLibro(libro.Codigo);
+            int enc = ValidarLibro(libro.Codigo);
             if (enc >= 0)
             {
                 Libros[enc].sumarCantidad(libro.Cantidad); //si el libro existe se suma a la cantidad
@@ -80,7 +84,7 @@ namespace Libreria.Dominio
         //Elimina un libro de la maquina.
         public bool eliminarLibro(string codigo)
         {
-            int enc = validarLibro(codigo);
+            int enc = ValidarLibro(codigo);
 
             if (enc >= 0)
             {
@@ -95,7 +99,7 @@ namespace Libreria.Dominio
         public string listarLibros()
         {
             string lista = "";
-            foreach (Libro item in Libros)
+            foreach (Book item in Libros)
             {
                 lista += item.Codigo + " " + item.Nombre + " " + item.Categoria + " " + item.Cantidad + " " + item.Valor + "\n";
             }
