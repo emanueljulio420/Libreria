@@ -2,31 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Libreria.Dominio
+
+namespace Libreria.Mundo
 {
     public class Libreria
     {
         public List<Book> Libros { get; set; }
+        public Carrito Carrito { get; set; }
         
         public Libreria()
         {
             Libros = new List<Book>();
 
-            Book libro1 = new Book();
-            libro1.Codigo = "01";
-            libro1.Nombre = "GOT";
-            libro1.Categoria = "Ficción";
-            libro1.Cantidad = 20;
-            libro1.Valor = 5000;
+            Carrito = new Carrito();
 
-            Book libro2 = new Book();
-            libro2.Codigo = "01";
-            libro2.Nombre = "GOT";
-            libro2.Categoria = "Ficción";
-            libro2.Cantidad = 20;
-            libro2.Valor = 5000;
+            Book libro1 = new ("01", "GOT", "Ficción", 20, 5000);
+
+            Book libro2 = new ("01","GOT", "Ficción", 20, 5000);
 
             Libros.Add(libro1);
             Libros.Add(libro2);

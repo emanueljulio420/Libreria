@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Libreria.Dominio
+namespace Libreria.Mundo
 {
     public class Book
     {
@@ -13,6 +13,15 @@ namespace Libreria.Dominio
         public string Categoria { get; set; }
         public int Cantidad { get; set; }
         public double Valor { get; set; }
+
+        public Book(string codigo, string nombre, string categoria, int cantidad, double valor)
+        {
+            Codigo = codigo;
+            Nombre = nombre;
+            Categoria = categoria;
+            Cantidad = cantidad;
+            Valor = valor;
+        }
 
         //suma a la cantidad de un libro.
         public void sumarCantidad(int cantidad)

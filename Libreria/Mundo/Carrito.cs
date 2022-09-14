@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Libreria.Dominio
+namespace Libreria.Mundo
 {
-    internal class Carrito
+    public class Carrito
     {
     }
 }
