@@ -199,7 +199,7 @@ namespace Libreria.Interfaz
                             Console.WriteLine($"Desea fiar el excedente : ");
                             Console.WriteLine($"1. Si");
                             Console.WriteLine($"2. No");
-                            Console.Write("Ingrese valor a pagar: ");
+                            Console.Write("Ingrese valor a pagar opcion 1 o 2: ");
                             int desicion = int.Parse(Console.ReadLine());
                             if (desicion == 1)
                             {
