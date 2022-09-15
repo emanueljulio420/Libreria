@@ -62,6 +62,5 @@ namespace Libreria.Mundo
         {
             Cantidad -= cantidad;
         }
-
     }
 }
