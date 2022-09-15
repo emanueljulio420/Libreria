@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Libreria.Mundo
+namespace BookStoreApp.Mundo
 {
     public class Fiador
     {

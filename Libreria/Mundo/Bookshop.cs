@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Libreria.Mundo
+namespace BookStoreApp.Mundo
 {
     public class Bookshop
     {
@@ -37,7 +37,7 @@ namespace Libreria.Mundo
 
             foreach (Book book in Libros)
             {
-                if (book.Codigo == codigo){
+                if (book.Code == codigo){
                     return true;
                 }
             }
@@ -50,12 +50,12 @@ namespace Libreria.Mundo
         {
             foreach (Book book in Libros)
             {
-                if (book.Codigo == codigo)
+                if (book.Code == codigo)
                 {
-                    book.Nombre = nombre;
-                    book.Categoria = categoria;
-                    book.Cantidad = cantidad;
-                    book.Valor = valor;
+                    book.Name = nombre;
+                    book.Category = categoria;
+                    book.Amount = cantidad;
+                    book.Value = valor;
                     return true;
                 }
             }
@@ -81,7 +81,7 @@ namespace Libreria.Mundo
         {
             foreach  (Book book in Libros)
             {
-                if (book.Codigo == codigo)
+                if (book.Code == codigo)
                 {
                     Libros.Remove(book);
                     return true;
@@ -95,7 +95,7 @@ namespace Libreria.Mundo
             string lista = "";
             foreach (Book item in Libros)
             {
-                lista += item.Codigo + " " + item.Nombre + " " + item.Categoria + " " + item.Cantidad + " " + item.Valor + "\n";
+                lista += item.Code + " " + item.Name + " " + item.Category + " " + item.Amount + " " + item.Value + "\n";
             }
             return lista;
 
@@ -165,9 +165,9 @@ namespace Libreria.Mundo
 
             foreach (Book libro in Libros)
             {
-                if (libro.Codigo == codigo)
+                if (libro.Code == codigo)
                 {
-                    return libro.Valor;
+                    return libro.Value;
                 }
             }
             return valor;
@@ -177,9 +177,9 @@ namespace Libreria.Mundo
         {
             foreach (Book libro in Libros)
             {
-                if (libro.Codigo == codigo)
+                if (libro.Code == codigo)
                 {
-                    libro.restarLibro(numeroUnidades);
+                    libro.SubtractBook(numeroUnidades);
                 }
             }
         }
@@ -187,9 +187,9 @@ namespace Libreria.Mundo
         {
             foreach (Book libro in Libros)
             {
-                if (libro.Codigo == codigo)
+                if (libro.Code == codigo)
                 {
-                    libro.sumarCantidad(numeroUnidades);
+                    libro.AddAmount(numeroUnidades);
                 }
             }
         }
@@ -198,9 +198,9 @@ namespace Libreria.Mundo
         {
             foreach (Book libro in Libros)
             {
-                if (libro.Codigo == codigo)
+                if (libro.Code == codigo)
                 {
-                    return libro.Cantidad;
+                    return libro.Amount;
                 }
             }
             return 0;
@@ -248,9 +248,9 @@ namespace Libreria.Mundo
             string lista = "";
             foreach (Book item in Libros)
             {
-                if (item.Cantidad < 5)
+                if (item.Amount < 5)
                 {
-                    lista += item.Codigo + " " + item.Nombre + " " + item.Categoria + " " + item.Cantidad + " " + item.Valor + "\n";
+                    lista += item.Code + " " + item.Name + " " + item.Category + " " + item.Amount + " " + item.Value + "\n";
                 }
             }
             return lista;

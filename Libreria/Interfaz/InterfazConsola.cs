@@ -1,4 +1,4 @@
-﻿using Libreria.Mundo;
+﻿using BookStoreApp.Mundo;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 
-namespace Libreria.Interfaz
+namespace BookStoreApp.Interfaz
 {
     class InterfazConsola
     {
