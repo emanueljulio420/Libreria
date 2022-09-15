@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace BookStoreApp.Mundo
+namespace BookStoreApp.Model
 {
     public class Bookshop
     {
