@@ -146,7 +146,7 @@ namespace BookStoreApp.Model
                 else
                 {
                     (int, double) t = (amount, price);
-                    cart.Libro.Add(code, t);
+                    cart.Book.Add(code, t);
                     return true;
                 }
             }
@@ -161,7 +161,7 @@ namespace BookStoreApp.Model
         /// </summary>
         public void SellBooks()
         {
-            foreach (KeyValuePair<string, (int, double)> book in cart.Libro)
+            foreach (KeyValuePair<string, (int, double)> book in cart.Book)
             {
                 SubtractUnits(book.Key, book.Value.Item1);
             }
@@ -190,7 +190,7 @@ namespace BookStoreApp.Model
         {
             foreach (Fiador bondsman in Fiadores)
             {
-                if (bondsman.Cedula == id)
+                if (bondsman.Id == id)
                 {
                     return true;
                 }
@@ -210,9 +210,9 @@ namespace BookStoreApp.Model
             {
                 foreach (Fiador bondsman in Fiadores)
                 {
-                    if (bondsman.Cedula == id)
+                    if (bondsman.Id == id)
                     {
-                        bondsman.Deuda -= value;
+                        bondsman.Debt -= value;
                         return true;
                     }
                 }
@@ -229,7 +229,7 @@ namespace BookStoreApp.Model
             string lista = "";
             foreach (Fiador item in Fiadores)
             {
-                lista += item.Cedula + " " + item.Nombre + " " + item.Deuda + "\n";
+                lista += item.Id + " " + item.Name + " " + item.Debt + "\n";
             }
             return lista;
         }
@@ -295,9 +295,9 @@ namespace BookStoreApp.Model
         {
             foreach (Fiador item in Fiadores)
             {
-                if (item.Cedula == id)
+                if (item.Id == id)
                 {
-                    item.Deuda += debt;
+                    item.Debt += debt;
                 }
             }
         }
@@ -311,9 +311,9 @@ namespace BookStoreApp.Model
         {
             foreach (Fiador item in Fiadores)
             {
-                if (item.Cedula == id)
+                if (item.Id == id)
                 {
-                    return item.Deuda;
+                    return item.Debt;
                 }
             }
             return -1;

@@ -9,20 +9,24 @@ namespace BookStoreApp.Model
     public class Cart
     {
 
-        public Dictionary<string, (int, double)> Libro { get; set; }
+        public Dictionary<string, (int, double)> Book { get; set; }
 
         public Cart()
         {
-            Libro = new Dictionary<string, (int, double)>();
+            Book = new Dictionary<string, (int, double)>();
         }
 
-        public double CalcularTotal()
+        /// <summary>
+        /// Calculate the total to pay by adding the price of the books found in the dictionary of the shopping cart.
+        /// </summary>
+        /// <returns>Returns the total to pay.</returns>
+        public double CalculateTotal()
         {
             double total = 0;
 
-            foreach (KeyValuePair<string, (int, double)> libro in Libro)
+            foreach (KeyValuePair<string, (int, double)> book in Book)
             {
-                total = libro.Value.Item2 * libro.Value.Item1;
+                total = book.Value.Item2 * book.Value.Item1;
             }
             return total;
         }

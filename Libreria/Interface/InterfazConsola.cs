@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 
-namespace BookStoreApp.Interfaz
+namespace BookStoreApp.Interface
 {
     class InterfazConsola
     {
@@ -166,7 +166,7 @@ namespace BookStoreApp.Interfaz
                 }
                 if (opcion == 6)
                 {
-                    double Total = Libreria.cart.CalcularTotal();
+                    double Total = Libreria.cart.CalculateTotal();
                     if (Total == 0)
                     {
                         Console.WriteLine("\n------------------------------------");
@@ -182,9 +182,9 @@ namespace BookStoreApp.Interfaz
                 }
                 if (opcion == 7)
                 {
-                    double total = Libreria.cart.CalcularTotal();
+                    double total = Libreria.cart.CalculateTotal();
                     Console.WriteLine("\n-------------- Realizar venta ------------------");
-                    Console.WriteLine($"Totla a pagar es: {Libreria.cart.CalcularTotal()}");
+                    Console.WriteLine($"Totla a pagar es: {Libreria.cart.CalculateTotal()}");
                     Console.Write("Ingrese valor a pagar: ");
                     double pagito = double.Parse(Console.ReadLine());
                     if(pagito >= total)

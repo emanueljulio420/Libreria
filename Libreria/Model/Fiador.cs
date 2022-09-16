@@ -8,14 +8,14 @@ namespace BookStoreApp.Model
 {
     public class Fiador
     {
-        public int Cedula { set; get; }
-        public string Nombre { set; get; }
-        public double Deuda { set; get; }
-        public Fiador(int cedula, string nombre, double deuda)
+        public int Id { set; get; }
+        public string Name { set; get; }
+        public double Debt { set; get; }
+        public Fiador(int id, string name, double debt)
         {
-            Cedula = cedula;
-            Nombre = nombre;
-            Deuda = deuda;
+            Id = id;
+            Name = name;
+            Debt = debt;
         }
     }
 }
