@@ -29,7 +29,6 @@ namespace BookStoreApp.Model
 
             Books.Add(libro1);
             Books.Add(libro2);
-
         }
 
         //Validamos si la libria cuenta con el libro.
