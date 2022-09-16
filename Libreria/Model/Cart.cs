@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BookStoreApp.Model
 {
-    public class Carrito
+    public class Cart
     {
 
         public Dictionary<string, (int, double)> Libro { get; set; }
 
-        public Carrito()
+        public Cart()
         {
             Libro = new Dictionary<string, (int, double)>();
         }

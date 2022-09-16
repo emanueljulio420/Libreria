@@ -61,7 +61,7 @@ namespace BookStoreApp.Interfaz
                     Console.Write("Ingrese el valor del libro: ");
                     double valor = double.Parse(Console.ReadLine());
                     Console.WriteLine("------------------------------------");
-                    if (Libreria.AgregarLibro(codigo, nombre, categoria, cantidad, valor)){
+                    if (Libreria.AddBook(codigo, nombre, categoria, cantidad, valor)){
                         Console.WriteLine("\n------------------------------------");
                         Console.WriteLine(" libro agregado correctamente ");
                         Console.WriteLine("------------------------------------");
@@ -79,7 +79,7 @@ namespace BookStoreApp.Interfaz
                     Console.WriteLine("------------------------------------");
                     Console.Write("Ingrese el codigo del libro: ");
                     string codigo = Console.ReadLine();
-                    if (Libreria.ValidarLibro(codigo))
+                    if (Libreria.ValidateBook(codigo))
                     {
                         Console.Write("Ingrese el nombre del libro: ");
                         string nombre = Console.ReadLine();
@@ -90,7 +90,7 @@ namespace BookStoreApp.Interfaz
                         Console.Write("Ingrese el valor del libro: ");
                         double valor = double.Parse(Console.ReadLine());
                         Console.WriteLine("------------------------------------");
-                        if (Libreria.ModificarLibro(codigo, nombre, categoria, cantidad, valor))
+                        if (Libreria.ModifyBook(codigo, nombre, categoria, cantidad, valor))
                         {
                             Console.WriteLine("\n------------------------------------");
                             Console.WriteLine(" libro cambiado correctamente ");
@@ -110,9 +110,9 @@ namespace BookStoreApp.Interfaz
                     Console.WriteLine("------------------------------------");
                     Console.Write("Ingrese el codigo del libro: ");
                     string codigo = Console.ReadLine();
-                    if (Libreria.ValidarLibro(codigo))
+                    if (Libreria.ValidateBook(codigo))
                     {
-                        if (Libreria.eliminarLibro(codigo))
+                        if (Libreria.DeleteBook(codigo))
                         {
                             Console.WriteLine("\n------------------------------------");
                             Console.WriteLine(" libro eliminado correctamente ");
@@ -131,7 +131,7 @@ namespace BookStoreApp.Interfaz
                     Console.WriteLine("------------------------------------");
                     Console.Write("Ingrese el codigo del libro: ");
                     string codigo = Console.ReadLine();
-                    if (Libreria.ValidarLibro(codigo))
+                    if (Libreria.ValidateBook(codigo))
                     {
                         Console.WriteLine("\n------------------------------------");
                         Console.WriteLine(" libro existente ");
@@ -151,7 +151,7 @@ namespace BookStoreApp.Interfaz
                     string codigo = Console.ReadLine();
                     Console.Write("Ingrese el numero de unidades: ");
                     int cantidad = int.Parse(Console.ReadLine());
-                    if (Libreria.AgregarLibroalcarrito(codigo, cantidad))
+                    if (Libreria.AddBooksToCart(codigo, cantidad))
                     {
                         Console.WriteLine("\n------------------------------------");
                         Console.WriteLine(" libro agregado correctamente");
@@ -166,7 +166,7 @@ namespace BookStoreApp.Interfaz
                 }
                 if (opcion == 6)
                 {
-                    double Total = Libreria.Carrito.CalcularTotal();
+                    double Total = Libreria.cart.CalcularTotal();
                     if (Total == 0)
                     {
                         Console.WriteLine("\n------------------------------------");
@@ -182,9 +182,9 @@ namespace BookStoreApp.Interfaz
                 }
                 if (opcion == 7)
                 {
-                    double total = Libreria.Carrito.CalcularTotal();
+                    double total = Libreria.cart.CalcularTotal();
                     Console.WriteLine("\n-------------- Realizar venta ------------------");
-                    Console.WriteLine($"Totla a pagar es: {Libreria.Carrito.CalcularTotal()}");
+                    Console.WriteLine($"Totla a pagar es: {Libreria.cart.CalcularTotal()}");
                     Console.Write("Ingrese valor a pagar: ");
                     double pagito = double.Parse(Console.ReadLine());
                     if(pagito >= total)
@@ -205,23 +205,23 @@ namespace BookStoreApp.Interfaz
                             {
                                 Console.Write("Ingrese la cedula del fiador: ");
                                 int cedula = int.Parse(Console.ReadLine());
-                                if (Libreria.VerificarFiador(cedula))
+                                if (Libreria.CheckBondsman(cedula))
                                 {
-                                    Libreria.Sumardeuda(cedula, total - pagito);
+                                    Libreria.AddDebt(cedula, total - pagito);
                                     Console.WriteLine("\n------------------------------------");
                                     Console.WriteLine($" Deuda aumentado correctamente ");
                                     Console.WriteLine("------------------------------------");
-                                    Libreria.VenderLibros();
+                                    Libreria.SellBooks();
                                 }
                                 else
                                 {
                                     Console.Write("Ingrese el nombre dle fiador: ");
                                     string nombre = Console.ReadLine();
-                                    Libreria.AgregarFiador(cedula, nombre, total - pagito);
+                                    Libreria.AddBondsman(cedula, nombre, total - pagito);
                                     Console.WriteLine("\n------------------------------------");
                                     Console.WriteLine($" Fiador creado correctamente con deuda");
                                     Console.WriteLine("------------------------------------");
-                                    Libreria.VenderLibros();
+                                    Libreria.SellBooks();
                                     break;
                                 }
                             }
@@ -236,22 +236,22 @@ namespace BookStoreApp.Interfaz
                     Console.WriteLine("\n------------------------------------");
                     Console.WriteLine($" Gracias por comprar en Booker");
                     Console.WriteLine("------------------------------------");
-                    Libreria.VenderLibros();
+                    Libreria.SellBooks();
                 }
                 if (opcion == 8)
                 {
-                    Console.WriteLine($"{Libreria.ListarLibros()}");
+                    Console.WriteLine($"{Libreria.ListBooks()}");
                 }
                 if (opcion == 9)
                 {
                     Console.WriteLine("------------------------------------");
                     Console.Write("Ingrese el codigo del libro: ");
                     string codigo = Console.ReadLine();
-                    if (Libreria.ValidarLibro(codigo))
+                    if (Libreria.ValidateBook(codigo))
                     {
                         Console.Write("Ingrese de unidades a restar: ");
                         int unidades = int.Parse(Console.ReadLine());
-                        Libreria.RestarUnidades(codigo, unidades); 
+                        Libreria.SubtractUnits(codigo, unidades); 
                     }
                     else
                     {
@@ -265,11 +265,11 @@ namespace BookStoreApp.Interfaz
                     Console.WriteLine("------------------------------------");
                     Console.Write("Ingrese el codigo del libro: ");
                     string codigo = Console.ReadLine();
-                    if (Libreria.ValidarLibro(codigo))
+                    if (Libreria.ValidateBook(codigo))
                     {
                         Console.Write("Ingrese de unidades a incrementar: ");
                         int unidades = int.Parse(Console.ReadLine());
-                        Libreria.AumentarUnidades(codigo, unidades);
+                        Libreria.IncreaseUnits(codigo, unidades);
                     }
                     else
                     {
@@ -283,9 +283,9 @@ namespace BookStoreApp.Interfaz
                     Console.WriteLine("------------------------------------");
                     Console.Write("Ingrese el codigo del libro: ");
                     string codigo = Console.ReadLine();
-                    if (Libreria.ValidarLibro(codigo))
+                    if (Libreria.ValidateBook(codigo))
                     {
-                        int unidades = Libreria.CantidaddeUnidades(codigo);
+                        int unidades = Libreria.QuantityUnits(codigo);
                         if (unidades == 0)
                         {
                             Console.WriteLine("\n------------------------------------");
@@ -301,7 +301,7 @@ namespace BookStoreApp.Interfaz
                     int cedula = int.Parse(Console.ReadLine());
                     Console.Write("Ingrese el nombre del fiador: ");
                     string nombre = Console.ReadLine();
-                    if (Libreria.VerificarFiador(cedula))
+                    if (Libreria.CheckBondsman(cedula))
                     {
                         Console.WriteLine("\n------------------------------------");
                         Console.WriteLine($" Fiador ya creado ");
@@ -309,7 +309,7 @@ namespace BookStoreApp.Interfaz
                     }
                     else
                     {
-                        Libreria.AgregarFiador(cedula, nombre);
+                        Libreria.AddBondsman(cedula, nombre);
                         Console.WriteLine("\n------------------------------------");
                         Console.WriteLine($" Fiador creado correctamente ");
                         Console.WriteLine("------------------------------------");
@@ -317,15 +317,15 @@ namespace BookStoreApp.Interfaz
                 }
                 if (opcion == 13)
                 {
-                    Console.WriteLine($"{Libreria.ListaFiadores()}");
+                    Console.WriteLine($"{Libreria.ListBondsman()}");
                 }
                 if (opcion == 14)
                 {
                     Console.Write("Ingrese la cedula del fiador: ");
                     int cedula = int.Parse(Console.ReadLine());
-                    if (Libreria.VerificarFiador(cedula))
+                    if (Libreria.CheckBondsman(cedula))
                     {
-                        double deuda = Libreria.Buscardeuda(cedula);
+                        double deuda = Libreria.SearchDebt(cedula);
                         if (deuda == -1)
                         {
                             Console.WriteLine("\n------------------------------------");
@@ -337,7 +337,7 @@ namespace BookStoreApp.Interfaz
                             Console.WriteLine($"Deuda total: {deuda}");
                             Console.Write("Ingrese el valor a pagar: ");
                             double pago = double.Parse(Console.ReadLine());
-                            Libreria.PagarDeudafiador(cedula, pago);
+                            Libreria.PayDebt(cedula, pago);
                             Console.WriteLine("\n------------------------------------");
                             Console.WriteLine($" Pago realizado correctamente ");
                             Console.WriteLine("------------------------------------");
@@ -352,7 +352,7 @@ namespace BookStoreApp.Interfaz
                 }
                 if (opcion == 15)
                 {
-                    Console.WriteLine($"{Libreria.UnidadesPoragotarse()}");
+                    Console.WriteLine($"{Libreria.UnitsToRunOut()}");
                 }
                 if (opcion == 16)
                 {
